@@ -49,6 +49,6 @@ class AuthController extends Controller
         if (!$user){
             return response()->json(['success'=>false, 'message'=> 'user already exists'], 500);
         }
-        return response()->json(['success'=> true, 'message'=> 'Registration success'], 500);
+        return response()->json(['success'=> true, 'message'=> 'Registration success'], 200);
     }
 }
