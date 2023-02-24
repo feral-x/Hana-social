@@ -1,8 +1,10 @@
 <template>
-    <div class="menu bg-primary">
-        <div class="bg-primary flex items-center w-screen">
+    <div class="menu bg-primary text-sm font-medium">
+        <div class="bg-primary flex items-center">
             <div class="logo p-[10px] max-h-10 flex items-center max-h-[50px]">
+                <a href="#">
                 <img src="../assets/img/logo.svg" alt="logo" class="md:w-[46px] h-[30px] w-[56px]">
+                </a>
             </div>
             <div class="max-h-[50px] form-box flex items-center md:w-1/4 w-full max-h-10">
                 <input type="text" class="md:max-w-[420px] bg-gray h-10 w-full placeholder-opacity-30 placeholder-silver focus:outline-0 pl-4 focus:bg-[#606060] hover:bg-[#606060] rounded-l" placeholder="Harry Potter...">
@@ -15,10 +17,18 @@
 
             <div class="max-h-[50px] flex hidden items-center md:block">
                 <ul class="decoration-0 flex w-full">
-                    <li class="text-silver px-2.5">Random</li>
-                    <li class="text-silver px-2.5">Tags</li>
-                    <li class="text-silver px-2.5">Artists</li>
-                    <li class="text-silver px-2.5">Charters</li>
+                    <li class="text-silver px-2.5 h-[50px] flex justify-center items-center hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
+                        <a href="#">Random</a>
+                    </li>
+                    <li class="text-silver px-2.5 h-[50px] flex justify-center items-center hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
+                        <a href="#">Tags</a>
+                    </li>
+                    <li class="text-silver px-2.5 h-[50px] flex justify-center items-center hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
+                        <a href="#">Artists</a>
+                    </li>
+                    <li class="text-silver px-2.5 h-[50px] flex justify-center items-center hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
+                        <a href="#">Charters</a>
+                    </li>
                 </ul>
             </div>
 

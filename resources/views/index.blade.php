@@ -10,6 +10,6 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-<div id="app" style="min-height: 100vh" class="bg-dark"></div>
+<div id="app" style="min-height: 100vh" class="bg-[#0D0D0D]"></div>
 </body>
 </html>
