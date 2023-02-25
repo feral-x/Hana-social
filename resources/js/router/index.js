@@ -6,6 +6,21 @@ const routes = [
         path: '/',
         name: "main.page",
         component: index
+    },
+    {
+        path: '/:id',
+        name: "title.page",
+        component: ()=> import('../views/PagePreview/index.vue')
+    },
+    {
+        path: '/login',
+        name: "login.page",
+        component: ()=> import('../views/Login.vue')
+    },
+    {
+        path: '/register',
+        name: "register.page",
+        component: ()=> import('../views/Register.vue')
     }
 ]
 

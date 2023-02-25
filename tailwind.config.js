@@ -13,7 +13,8 @@ module.exports = {
           primary: '#1F1F1F',
           danger: '#ed2553',
           white: '#fff',
-          gray: '#4D4D4D'
+          gray: '#4D4D4D',
+          hover: '#666'
       }
   },
   plugins: [],
