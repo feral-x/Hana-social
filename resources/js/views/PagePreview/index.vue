@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="tags-box flex flex-col">
-                    <div class="flex flex-col">
+                    <div class="flex flex-col font-bold">
                         <div class="flex gap-1">Parodies: <span><a href="#" class="font-bold text-silver text-sm">Princess</a></span></div>
                         <div class="flex gap-1">Characters: <span><a href="#" class="font-bold text-silver text-sm">Princess</a></span></div>
                         <div class="flex gap-1">Tags: <span><a href="#" class="font-bold text-silver text-sm">Princess</a></span></div>
@@ -66,6 +66,11 @@ const payloadMore = reactive([
         'id': 2,
         'url': 'assets/img/thumb.webp',
         'title': '[STUDIO HUAN (Raidon)] [Niziyumedokoro (Yakuhina)] PRINCESS SHADOW 2 (Princess Connect! Re:Dive) [Digital]'
+    },
+    {
+        'id': 3,
+        'url': 'assets/img/thumb.webp',
+        'title': '(PriConne Daihyakka 12) [Ryuukakusan Nodoame (Gokubuto Mayuge)] Shiori no Ecchi na Hi (Princess Connect! Re:Dive)'
     },
     {
         'id': 3,

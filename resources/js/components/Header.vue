@@ -17,17 +17,17 @@
 
             <div class="max-h-[50px] flex hidden items-center md:block">
                 <ul class="decoration-0 flex w-full">
-                    <li class="text-silver px-2.5 h-[50px] flex justify-center items-center hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
-                        <a href="#">Random</a>
+                    <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
+                        <a href="#" class="h-[50px] flex justify-center items-center">Random</a>
                     </li>
-                    <li class="text-silver px-2.5 h-[50px] flex justify-center items-center hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
-                        <a href="#">Tags</a>
+                    <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
+                        <a href="#" class="h-[50px] flex justify-center items-center">Tags</a>
                     </li>
-                    <li class="text-silver px-2.5 h-[50px] flex justify-center items-center hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
-                        <a href="#">Artists</a>
+                    <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
+                        <a href="#" class="h-[50px] flex justify-center items-center">Artists</a>
                     </li>
-                    <li class="text-silver px-2.5 h-[50px] flex justify-center items-center hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
-                        <a href="#">Charters</a>
+                    <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
+                        <a href="#" class="h-[50px] flex justify-center items-center">Charters</a>
                     </li>
                 </ul>
             </div>

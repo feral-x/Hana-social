@@ -7,28 +7,50 @@
         </div>
         <div class="text-white text-center italic ">Abandon all hope, ye who enter here</div>
         <div class="text-white text-center italic">ここから入らんとする者は一切の希望を放棄せよ</div>
-        <form class="flex flex-col justify-center items-center mt-3.5 max-w-[350px] w-full">
-            <input placeholder="Email" type="text" class="p-2.5 outline-0 border-b border-b-primary w-full max-w-[300px] bg-gray focus:bg-hover focus:shadow-2xl hover:bg-hover hover:shadow-2xl text-white font-bold h-[55px]">
-            <input placeholder="Password" type="text" class="p-2.5 outline-0 border-b border-b-primary w-full max-w-[300px] bg-gray focus:bg-hover focus:shadow-2xl hover:bg-hover hover:shadow-2xl text-white font-bold h-[55px]">
-            <button class="bg-danger flex py-1 w-8/12 flex items-center justify-center mx-auto rounded mt-3.5 mb-1.5 text-silver font-bold text-[17px] max-w-[300px] w-full py-0.5 px-1.5 h-[50px]">
+        <form class="flex flex-col justify-center items-center mt-3.5 max-w-[350px] w-full" @submit.prevent="startLogin">
+            <input placeholder="Email" type="text" class="p-2.5 outline-0 border-b border-b-primary w-full max-w-[300px] bg-gray focus:bg-hover focus:shadow-2xl hover:bg-hover hover:shadow-2xl text-white font-bold h-[55px]"
+                   v-model="userEmail">
+            <input placeholder="Password" type="password" class="p-2.5 outline-0 border-b border-b-primary w-full max-w-[300px] bg-gray focus:bg-hover focus:shadow-2xl hover:bg-hover hover:shadow-2xl text-white font-bold h-[55px]"
+                   v-model="userPassword">
+            <button class="bg-danger flex py-1 w-8/12 flex items-center justify-center mx-auto rounded mt-3.5 mb-1.5 text-silver font-bold text-[17px] max-w-[300px] w-full py-0.5 px-1.5 h-[50px] hover:opacity-75">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
                 </svg>
                 Login
             </button>
             <div class="text-center text-silver flex">
-                Dont have account? <a href="#" class="text-center font-bold">&nbsp;Register</a>
+                Dont have account? <a href="#" class="text-center font-bold" @click.prevent="getMe">&nbsp;Register</a>
             </div>
         </form>
     </div>
 </template>
 
-<script>
-export default {
-    name: "Login"
+<script setup>
+import {ref} from "vue";
+import axios from "axios";
+axios.defaults.withCredentials = true;
+const userEmail = ref('');
+const userPassword = ref('');
+
+const startLogin = () => {
+    axios.get('/sanctum/csrf-cookie').then(response => {
+        axios.post('/api/login', {
+            'email': userEmail.value,
+            'password': userPassword.value,
+        }).then(r => {
+            console.log(r)
+           if(r.data.access_token){
+               localStorage.setItem('access_token', r.data.access_token)
+           }
+        }).catch(e => {
+            console.log(e);
+        })
+    })
+}
+const getMe = () => {
+    axios.get('/api/get')
+    .then(res => console.log(res))
+    .catch(e => console.log(e))
 }
 </script>
 
-<style scoped>
-
-</style>
