@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Passport\Client;
 
@@ -36,7 +35,6 @@ class AuthController extends Controller
                         'scope' => '*',
                     ]);
                     $json = app()->handle($response);
-
                     return $json;
                 } else {
                     return response()->json(['message'=> 'Wrong password or email'], 500);

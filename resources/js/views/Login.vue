@@ -27,28 +27,27 @@
 
 <script setup>
 import {ref} from "vue";
-import axios from "axios";
-axios.defaults.withCredentials = true;
+import api from "../api.js";
+
 const userEmail = ref('');
 const userPassword = ref('');
 
 const startLogin = () => {
-    axios.get('/sanctum/csrf-cookie').then(response => {
-        axios.post('/api/login', {
-            'email': userEmail.value,
-            'password': userPassword.value,
-        }).then(r => {
-            console.log(r)
-           if(r.data.access_token){
-               localStorage.setItem('access_token', r.data.access_token)
-           }
-        }).catch(e => {
-            console.log(e);
-        })
+    api.post('/api/login', {
+        'email': userEmail.value,
+        'password': userPassword.value,
+    }).then(r => {
+        console.log(r)
+       if(r.data.access_token){
+           localStorage.setItem('access_token', r.data.access_token)
+           localStorage.setItem('refresh_token', r.data.refresh_token)
+       }
+    }).catch(e => {
+        console.log(e);
     })
 }
 const getMe = () => {
-    axios.get('/api/get')
+    api.get('/api/get')
     .then(res => console.log(res))
     .catch(e => console.log(e))
 }
