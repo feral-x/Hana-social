@@ -24,10 +24,13 @@
                         <a href="#" class="h-[50px] flex justify-center items-center">Tags</a>
                     </li>
                     <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
-                        <a href="#" class="h-[50px] flex justify-center items-center">Artists</a>
+                        <a href="#" class="h-[50px] flex justify-center items-center">Categories</a>
                     </li>
                     <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
-                        <a href="#" class="h-[50px] flex justify-center items-center">Charters</a>
+                        <a href="#" class="h-[50px] flex justify-center items-center">Authors</a>
+                    </li>
+                    <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
+                        <a href="#" class="h-[50px] flex justify-center items-center"></a>
                     </li>
                 </ul>
             </div>
