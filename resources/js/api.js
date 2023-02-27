@@ -1,5 +1,7 @@
 import axios from "axios";
+import {useStore} from "vuex";
 const api = axios.create();
+const store = useStore();
 api.interceptors.request.use(
     config => {
         if(localStorage.getItem('access_token')) {
@@ -19,11 +21,13 @@ api.interceptors.response.use(null, (error) => {
             localStorage.setItem('access_token', token.data.access_token);
             localStorage.setItem('refresh_token', token.data.refresh_token);
             localStorage.setItem('isLogin', '1');
+            store.state.isLogin = true;
             return axios.request(error.config);
         }).catch(e => {
             localStorage.removeItem('isLogin')
             localStorage.removeItem('access_token')
             localStorage.removeItem('refresh_token')
+            store.state.isLogin = false;
         })
     }
 

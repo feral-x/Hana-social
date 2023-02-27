@@ -19,3 +19,8 @@ Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'regis
 Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
 Route::post('refresh', \App\Http\Controllers\Api\RefreshTokenController::class);
 Route::get('checkout_token', \App\Http\Controllers\Api\CheckoutTokenController::class)->middleware('auth:api');;
+
+
+Route::group([], function (){
+   Route::get('/book', \App\Http\Controllers\Api\Book\GetBookController::class);
+});

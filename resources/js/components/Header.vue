@@ -29,9 +29,6 @@
                     <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
                         <a href="#" class="h-[50px] flex justify-center items-center">Authors</a>
                     </li>
-                    <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
-                        <a href="#" class="h-[50px] flex justify-center items-center"></a>
-                    </li>
                 </ul>
             </div>
 
@@ -41,7 +38,7 @@
                 </svg>
             </button>
 
-            <div v-if="!loginFlag" class="max-h-[50px] ml-auto md:flex hidden h-[50px] text-silver">
+            <div v-if="!store.state.isLogin" class="max-h-[50px] ml-auto md:flex hidden h-[50px] text-silver">
                 <router-link :to="{name: 'login.page'}">
                     <button class="bg-gray flex p-2.5 items-center font-bold text-silver h-full hover:opacity-70">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -59,7 +56,7 @@
                     </button>
                 </router-link>
             </div>
-            <div v-if="loginFlag" class="max-h-[50px] ml-auto md:flex hidden h-[50px] text-silver h-full hover:opacity-70">
+            <div v-if="store.state.isLogin" class="max-h-[50px] ml-auto md:flex hidden h-[50px] text-silver h-full hover:opacity-70">
                     <button class="bg-gray flex p-2.5 items-center font-bold text-silver h-[50px]" @click="logoutHandler">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
@@ -109,12 +106,10 @@ const router = useRouter();
 const store = useStore();
 
 
-let loginFlag = ref(false);
-loginFlag.value = localStorage['isLogin'];
+console.log(store.state.isLogin)
 let activeMobileMenu = ref(false)
 const logoutHandler = () => {
     store.commit('logout');
-    loginFlag.value = localStorage['isLogin'];
 }
 </script>
 

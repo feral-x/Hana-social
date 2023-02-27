@@ -16,9 +16,9 @@ return new class extends Migration
             $table->integer('volume')->nullable();
             $table->integer('chapter')->nullable();
             $table->integer('page');
-            $table->integer('url');
+            $table->string('url');
 
-            $table->foreignId('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->foreignId('book_id')->index()->references('id')->on('books')->onDelete('cascade');
 
             $table->timestamps();
         });

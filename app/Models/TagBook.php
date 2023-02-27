@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TagBook extends Model
 {
+
     use HasFactory;
     public $guarded = false;
+    public $table = 'tag_books';
 }

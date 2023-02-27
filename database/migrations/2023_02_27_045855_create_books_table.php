@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('preview_img')->nullable();
             $table->float('rating')->default(0);
             $table->date('create_book_data')->nullable();
-            $table->foreignId('uploader')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('uploader')->index()->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

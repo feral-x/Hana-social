@@ -29,6 +29,7 @@
 import {ref} from "vue";
 import api from "../api.js";
 import {useRouter} from "vue-router";
+import store from "../store/index.js";
 
 const userEmail = ref('');
 const userPassword = ref('');
@@ -42,6 +43,7 @@ const startLogin = () => {
            localStorage.setItem('access_token', r.data.access_token);
            localStorage.setItem('refresh_token', r.data.refresh_token);
            localStorage.setItem('isLogin', '1');
+           store.state.isLogin = true;
            router.push({name: 'main.page'})
        }
     }).catch(e => {

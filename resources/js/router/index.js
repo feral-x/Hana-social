@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from "vue-router";
 import index from "../views/index.vue";
 import api from "../api.js";
+import store from "../store/index.js";
 
 const routes = [
     {
@@ -37,6 +38,7 @@ router.beforeEach((to, from, next) => {
                     localStorage.removeItem('isLogin')
                     localStorage.removeItem('access_token')
                     localStorage.removeItem('refresh_token')
+                    store.state.isLogin = false;
                 }
             })
         next()

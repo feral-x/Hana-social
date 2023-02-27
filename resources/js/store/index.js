@@ -4,16 +4,10 @@ import { createStore } from 'vuex'
 const store = createStore({
     state () {
         return {
-            isLogin: localStorage.getItem('isLogin')
+            isLogin: localStorage['isLogin']
         }
     },
     mutations: {
-        getLoginStatus(){
-            return this.state.isLogin
-        },
-        setLoginStatus(){
-            return this.state.isLogin
-        },
         logout(){
             localStorage.removeItem('isLogin')
             localStorage.removeItem('access_token')
