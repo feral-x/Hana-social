@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
 Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
 Route::post('refresh', \App\Http\Controllers\Api\RefreshTokenController::class);
-
-Route::get('/get',function (){
-    return response()->json('1231231231');
-})->middleware('auth:api');
+Route::get('checkout_token', \App\Http\Controllers\Api\CheckoutTokenController::class)->middleware('auth:api');;

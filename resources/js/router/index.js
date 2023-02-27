@@ -1,5 +1,6 @@
 import {createRouter, createWebHistory} from "vue-router";
 import index from "../views/index.vue";
+import api from "../api.js";
 
 const routes = [
     {
@@ -8,7 +9,7 @@ const routes = [
         component: index
     },
     {
-        path: '/:id',
+        path: '/g/:id',
         name: "title.page",
         component: ()=> import('../views/PagePreview/index.vue')
     },
@@ -29,4 +30,15 @@ const router = createRouter({
     history: createWebHistory()
 })
 
+router.beforeEach((to, from, next) => {
+        api.get('/api/checkout_token')
+            .catch(e => {
+                if(e.response.status === 401){
+                    localStorage.removeItem('isLogin')
+                    localStorage.removeItem('access_token')
+                    localStorage.removeItem('refresh_token')
+                }
+            })
+        next()
+})
 export default router;

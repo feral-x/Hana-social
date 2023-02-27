@@ -1,9 +1,9 @@
 <template>
     <div class="flex flex-col justify-center items-center h-screen">
         <div class="logo my-3.5">
-            <a href="#" class="cursor-pointer hover:opacity-70">
+            <router-link :to="{name: 'main.page'}" class="cursor-pointer hover:opacity-70">
                 <img src="../assets/img/logo.svg" alt="logo" class="h-20">
-            </a>
+            </router-link>
         </div>
         <div class="text-white text-center italic ">Abandon all hope, ye who enter here</div>
         <div class="text-white text-center italic">ここから入らんとする者は一切の希望を放棄せよ</div>
@@ -19,7 +19,7 @@
                 Login
             </button>
             <div class="text-center text-silver flex">
-                Dont have account? <a href="#" class="text-center font-bold" @click.prevent="getMe">&nbsp;Register</a>
+                Dont have account? <router-link :to="{name: 'register.page'}" class="text-center font-bold">&nbsp;Register</router-link>
             </div>
         </form>
     </div>
@@ -28,28 +28,26 @@
 <script setup>
 import {ref} from "vue";
 import api from "../api.js";
+import {useRouter} from "vue-router";
 
 const userEmail = ref('');
 const userPassword = ref('');
-
+const router = useRouter();
 const startLogin = () => {
     api.post('/api/login', {
         'email': userEmail.value,
         'password': userPassword.value,
     }).then(r => {
-        console.log(r)
        if(r.data.access_token){
-           localStorage.setItem('access_token', r.data.access_token)
-           localStorage.setItem('refresh_token', r.data.refresh_token)
+           localStorage.setItem('access_token', r.data.access_token);
+           localStorage.setItem('refresh_token', r.data.refresh_token);
+           localStorage.setItem('isLogin', '1');
+           router.push({name: 'main.page'})
        }
     }).catch(e => {
         console.log(e);
     })
 }
-const getMe = () => {
-    api.get('/api/get')
-    .then(res => console.log(res))
-    .catch(e => console.log(e))
-}
+
 </script>
 

@@ -1,9 +1,9 @@
 <template>
     <div class="flex flex-col justify-center items-center h-screen">
         <div class="logo my-3.5">
-            <a href="#" class="cursor-pointer hover:opacity-70">
+            <router-link :to="{name: 'main.page'}" class="cursor-pointer hover:opacity-70">
                 <img src="../assets/img/logo.svg" alt="logo" class="h-20">
-            </a>
+            </router-link>
         </div>
         <div class="text-white text-center italic ">Abandon all hope, ye who enter here</div>
         <div class="text-white text-center italic">ここから入らんとする者は一切の希望を放棄せよ</div>
@@ -23,7 +23,7 @@
                 Register
             </button>
             <div class="text-center text-silver flex">
-                Already have an account? <a href="#" class="text-center font-bold">&nbsp;Login</a>
+                Already have an account? <router-link :to="{name: 'login.page'}" class="text-center font-bold">&nbsp;Login</router-link>
             </div>
         </form>
     </div>
@@ -32,7 +32,8 @@
 <script setup>
 import axios from "axios";
 import {ref} from "vue";
-
+import {useRouter} from "vue-router";
+const router = useRouter();
 const userName = ref('');
 const userEmail = ref('');
 const userPassword = ref('');
@@ -44,7 +45,9 @@ const startRegister = () => {
         'password': userPassword.value,
         'password_confirmation': userPasswordConfirm.value,
     })
-    .then(res => console.log(res))
+    .then(()=>{
+        router.push({name: 'login.page'})
+    })
 }
 
 </script>
