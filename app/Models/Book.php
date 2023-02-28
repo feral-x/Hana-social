@@ -18,7 +18,7 @@ class Book extends Model
         return $this->belongsToMany(Category::class, 'category_books')->withTimestamps();
     }
     public function uploader(){
-        return $this->hasOne(User::class, 'id', 'uploader_id');
+        return $this->hasMany(User::class, 'id', 'uploader');
     }
     public function pages()
     {

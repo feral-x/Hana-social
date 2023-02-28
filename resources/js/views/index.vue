@@ -22,6 +22,7 @@ import VueContainer from '../components/Container.vue'
 import Pagination from '../components/Pagination.vue'
 import MainPagePayload from '../components/MainPagePayload.vue'
 import {reactive} from "vue";
+import api from "../api.js";
 
 const payloadPopular = reactive([
     {
@@ -76,28 +77,12 @@ const payloadPopular = reactive([
     },
 ])
 
-const payloadNews = reactive([
-    {
-        'id': 1,
-        'url': 'assets/img/cover.webp',
-        'title': '[STUDIO HUAN (Raidon)] Jimoto no Hame Tomo. "Shinya no Conveni Tenin A" | My Hometown Fuck Buddy. Midnight Shift Store Clerk A\'s Case [English] [Team Rabu2]'
-    },
-    {
-        'id': 2,
-        'url': 'assets/img/thumb.webp',
-        'title': '[STUDIO HUAN (Raidon)] [Niziyumedokoro (Yakuhina)] PRINCESS SHADOW 2 (Princess Connect! Re:Dive) [Digital]'
-    },
-    {
-        'id': 3,
-        'url': 'assets/img/thumb.webp',
-        'title': '(PriConne Daihyakka 12) [Ryuukakusan Nodoame (Gokubuto Mayuge)] Shiori no Ecchi na Hi (Princess Connect! Re:Dive)'
-    },
-    {
-        'id': 3,
-        'url': 'assets/img/thumb.webp',
-        'title': '(PriConne Daihyakka 12) [Ryuukakusan Nodoame (Gokubuto Mayuge)] Shiori no Ecchi na Hi (Princess Connect! Re:Dive)'
-    },
-])
+const payloadNews = reactive([])
+
+api.get('/api/books').then(res =>{
+    payloadNews.value = res.data
+})
+
 </script>
 
 <style>

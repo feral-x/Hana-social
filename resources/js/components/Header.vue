@@ -106,7 +106,6 @@ const router = useRouter();
 const store = useStore();
 
 
-console.log(store.state.isLogin)
 let activeMobileMenu = ref(false)
 const logoutHandler = () => {
     store.commit('logout');

@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +20,6 @@ Route::get('checkout_token', \App\Http\Controllers\Api\CheckoutTokenController::
 
 
 Route::group([], function (){
-   Route::get('/book', \App\Http\Controllers\Api\Book\GetBookController::class);
+   Route::get('/book/{id}', \App\Http\Controllers\Api\Book\GetBookController::class);
+   Route::get('/books', \App\Http\Controllers\Api\Book\IndexBookController::class);
 });
