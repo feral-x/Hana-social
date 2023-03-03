@@ -9,4 +9,9 @@ class Comment extends Model
 {
     use HasFactory;
     public $guarded = false;
+
+    public function get_users()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

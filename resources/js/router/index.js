@@ -15,6 +15,11 @@ const routes = [
         component: ()=> import('../views/PagePreview/index.vue')
     },
     {
+        path: '/g/:book_id/:page_id',
+        name: "read.page",
+        component: ()=> import('../views/ReadPage.vue')
+    },
+    {
         path: '/login',
         name: "login.page",
         component: ()=> import('../views/Login.vue')
@@ -23,7 +28,15 @@ const routes = [
         path: '/register',
         name: "register.page",
         component: ()=> import('../views/Register.vue')
-    }
+    },
+
+
+
+    {
+        path: '/:pathMatch(.*)*',
+        name: '404',
+        component: ()=>import('../views/404.vue')
+    },
 ]
 
 const router = createRouter({

@@ -1,7 +1,6 @@
 import axios from "axios";
-import {useStore} from "vuex";
+import store from "./store/index.js";
 const api = axios.create();
-const store = useStore();
 api.interceptors.request.use(
     config => {
         if(localStorage.getItem('access_token')) {

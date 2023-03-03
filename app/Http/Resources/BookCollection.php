@@ -23,6 +23,7 @@ class BookCollection extends JsonResource
             "categories"=> CategoriesCollection::collection($this->categories()->get()),
             "uploader"=> UploaderCollection::collection($this->uploader),
             "pages"=> PagesCollection::collection($this->pages()->get()),
+            "created_at"=> $this->created_at
         ];
     }
 }

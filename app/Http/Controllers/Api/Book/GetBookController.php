@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Api\Book;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BookCollection;
 use App\Models\Book;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class GetBookController extends Controller
 {

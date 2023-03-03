@@ -9,3 +9,7 @@ html {
 .w-1\/2 {
     width: 48%;
 }
+
+.input {
+    @apply md:max-w-[420px] bg-gray h-10 w-full placeholder-opacity-30 placeholder-silver focus:outline-0 pl-4 focus:bg-[#606060] hover:bg-[#606060] rounded-l
+}

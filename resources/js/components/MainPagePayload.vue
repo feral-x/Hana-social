@@ -15,10 +15,6 @@
         </div>
     </div>
 
-
-    <div class="flex text-silver mt-4 mx-auto w-full text-center justify-center mb-4" v-if="props.type === 'input_comment'">
-        <router-link :to="{name: 'login.page'}" class="underline hover:no-underline">Login</router-link> &nbsp;or&nbsp;<router-link :to="{name: 'register.page'}" class="underline hover:no-underline">Register &nbsp;</router-link> to post a comment.
-    </div>
 </template>
 
 <script setup>
