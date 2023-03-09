@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
+use App\Models\TagBook;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class TagsCollection extends JsonResource
 {
@@ -18,6 +18,7 @@ class TagsCollection extends JsonResource
         return [
             "id"=>$this->id,
             "title"=>$this->title,
+            "count" => TagBook::where('tag_id', $this->id)->get()->count()
         ];
     }
 }

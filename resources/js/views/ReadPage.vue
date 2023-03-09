@@ -120,29 +120,27 @@ api.get('/api/book/'+book_id)
     })
 
 const next_page = () => {
-    console.log('next')
-    if (page_data.value.pages.length === cur_page.value){
+    if (+page_data.value.pages.length === +cur_page.value){
         router.push({name: 'title.page', params: {id: book_id}})
     } else {
+        console.log(page_data.value.pages.length)
+        console.log(cur_page.value)
         cur_page.value++
         router.replace({name: 'read.page', params: {book_id: book_id, page_id: cur_page.value}})
     }
 }
 
 const prev_page = () => {
-    console.log('prev')
     cur_page.value--;
     router.replace({name: 'read.page', params: {book_id: book_id, page_id: cur_page.value}})
 }
 
 const toEnd = () => {
-    console.log('end')
     cur_page.value = page_data.value.pages.length;
     router.replace({name: 'read.page', params: {book_id: book_id, page_id: cur_page.value}})
 }
 
 const toStart = () => {
-    console.log('start')
     cur_page.value = 1;
     router.replace({name: 'read.page', params: {book_id: book_id, page_id: cur_page.value}})
 }

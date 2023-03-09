@@ -10,9 +10,14 @@ class AdminCheckout
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth('api')->user()->id !== 1){
-            return redirect('/', 403);
-        } else {
+        $user = auth('api')->user();
+        if($user && $user->id !== 1){
+            return \response()->json('denied', 403);
+        }
+        elseif ($user === null) {
+            return \response()->json('not authorization', 401);
+        }
+        else {
             return $next($request);
         }
     }

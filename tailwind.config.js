@@ -7,15 +7,14 @@ module.exports = {
         "./resources/**/**/*.vue",
     ],
   theme: {
-    extend: {},
       colors: {
           silver: '#d9d9d9', // #E53935
-          primary: '#1F1F1F',
           danger: '#ed2553',
           white: '#fff',
           gray: '#4D4D4D',
-          hover: '#666'
-      }
+          hover: '#666',
+          primary: '#1F1F1F',
+      },
+    extend: {},
   },
-  plugins: [],
 }

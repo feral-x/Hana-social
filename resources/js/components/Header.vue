@@ -7,8 +7,8 @@
                 </router-link>
             </div>
             <div class="max-h-[50px] form-box flex items-center md:w-1/4 w-full max-h-10">
-                <input type="text" class="md:max-w-[420px] bg-gray h-10 w-full placeholder-opacity-30 placeholder-silver focus:outline-0 pl-4 focus:bg-[#606060] hover:bg-[#606060] rounded-l" placeholder="Harry Potter...">
-                <button class="p-3 bg-danger max-h-10 rounded-r flex items-center hover:bg-[#C64569FF]">
+                <input type="text" class="md:max-w-[420px] bg-gray h-10 w-full placeholder-opacity-30 placeholder-silver focus:outline-0 pl-4 focus:bg-[#606060] hover:bg-[#606060] rounded-l text-silver" placeholder="Books, tags and other..." v-model="inputData" @keydown.enter="startSearch">
+                <button class="p-3 bg-danger max-h-10 rounded-r flex items-center hover:bg-[#C64569FF]" @click="startSearch">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="white" class="w-[18px] h-[25px] ">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                     </svg>
@@ -17,17 +17,14 @@
 
             <div class="max-h-[50px] flex hidden items-center md:block">
                 <ul class="decoration-0 flex w-full">
-                    <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
-                        <a href="#" class="h-[50px] flex justify-center items-center">Random</a>
+                    <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200 cursor-pointer" @click="goRandom">
+                        <span class="h-[50px] flex justify-center items-center">Random</span>
                     </li>
-                    <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
-                        <a href="#" class="h-[50px] flex justify-center items-center">Tags</a>
+                    <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200 cursor-pointer" @click="goTags">
+                        <span class="h-[50px] flex justify-center items-center">Tags</span>
                     </li>
-                    <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
-                        <a href="#" class="h-[50px] flex justify-center items-center">Categories</a>
-                    </li>
-                    <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200">
-                        <a href="#" class="h-[50px] flex justify-center items-center">Authors</a>
+                    <li class="text-silver px-2.5 hover:bg-gray hover:bg-gray hover:transition-all ease-in-out duration-200 cursor-pointer" @click="goCategories">
+                        <span class="h-[50px] flex justify-center items-center">Categories</span>
                     </li>
                 </ul>
             </div>
@@ -102,14 +99,35 @@
 import {ref} from "vue";
 import {useStore} from 'vuex'
 import {useRouter} from "vue-router";
+import api from "../api.js";
 const router = useRouter();
 const store = useStore();
 
+const inputData = ref('');
 
 let activeMobileMenu = ref(false)
 const logoutHandler = () => {
     store.commit('logout');
 }
+
+const goRandom = () => {
+    api.get('/api/random')
+        .then(res => {
+            router.push({name: 'title.page', params: {id: res.data.book_id}})
+        })
+}
+
+const goTags = () => {
+    router.push({name: 'tags.page'})
+}
+const goCategories = () => {
+    router.push({name: 'categories.page'})
+}
+
+const startSearch = () => {
+    router.push({name: 'search.page', query: {search: inputData.value}})
+}
+
 </script>
 
 

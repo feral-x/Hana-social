@@ -11,6 +11,6 @@ class Category extends Model
     public $guarded = false;
 
     public function books(){
-        return $this->belongsToMany(CategoryBook::class, 'category_books')->withTimestamps();
+        return $this->belongsToMany(Book::class, 'category_books', 'category_id', 'book_id');
     }
 }

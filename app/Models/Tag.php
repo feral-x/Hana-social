@@ -12,6 +12,6 @@ class Tag extends Model
     public $table = 'tags';
 
     public function books(){
-        return $this->belongsToMany(TagBook::class, 'tag_books')->withTimestamps();
+        return $this->belongsToMany(Book::class, 'tag_books', 'tag_id', 'book_id');
     }
 }
