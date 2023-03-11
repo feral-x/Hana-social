@@ -38,6 +38,8 @@ Route::group([], function (){
    Route::post('/likes', \App\Http\Controllers\Api\Book\LikeBook::class);
    Route::post('/get_likes', \App\Http\Controllers\Api\Book\GetCountLikes::class);
 
+   Route::get('/get_popular', \App\Http\Controllers\Api\Book\GetPopularBooks::class);
+
    Route::post('/users/me', \App\Http\Controllers\Api\GetMyIdController::class);
 });
 
